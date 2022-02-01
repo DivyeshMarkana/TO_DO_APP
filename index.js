@@ -3,9 +3,10 @@ let todoItems = [];
 
 
 function renderTodo(todo) {
-    
+
     // List of todo items
     const list = document.querySelector(".js-todo-list")
+    const item = document.querySelector(`[data-key='${todo.id}']`)
 
     // If  todo.checked is true so assign "done" otherwise an assign empty string
     const isChecked = todo.checked ? "done" : "";
@@ -28,7 +29,11 @@ function renderTodo(todo) {
     </button>
   `;
 
-    list.append(node);
+    if (item) {
+        list.replaceChild(node, item)
+    } else {
+        list.append(node);
+    }
 }
 
 const list = document.querySelector(".js-todo-list")
@@ -42,12 +47,12 @@ list.addEventListener("click", event => {
 })
 
 function toggleDone(key) {
-    
+
     // find the position of an element in the array
     const index = todoItems.findIndex(item => item.id === Number(key));
 
     // locate the to do item in the todoItems array and set its property to the opposite.
-    todoItems[index].checked = ! todoItems[index].checked;
+    todoItems[index].checked = !todoItems[index].checked;
     renderTodo(todoItems[index]);
 
 
@@ -57,7 +62,7 @@ function toggleDone(key) {
 // function will creates object of TO DO items base on what entered in input text and push it to todoItems array with unique id name created with Date.now().
 
 function addTodo(text) {
-    const todo  = {
+    const todo = {
         text,
         checked: false,
         id: Date.now()
@@ -66,7 +71,7 @@ function addTodo(text) {
     todoItems.push(todo)
     renderTodo(todo)
     console.log(todoItems);
-} 
+}
 
 // form element
 const form = document.querySelector(".js-form")
