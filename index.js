@@ -126,6 +126,13 @@ form.addEventListener("submit", event => {
 
 })
 
+document.addEventListener("DOMContentLoaded", () =>{
+    const ref = localStorage.getItem("todoListRef");
 
-
-
+    if (ref) {
+        todoItems = JSON.parse(ref)
+        todoItems.forEach(t => {
+            renderTodo(t)
+        })
+    }
+})
