@@ -8,6 +8,11 @@ function renderTodo(todo) {
     const list = document.querySelector(".js-todo-list")
     const item = document.querySelector(`[data-key='${todo.id}']`)
 
+    if (todo.deleted) {
+        item.remove()
+        return
+    }
+
     // If  todo.checked is true so assign "done" otherwise an assign empty string
     const isChecked = todo.checked ? "done" : "";
 
@@ -74,6 +79,7 @@ function deleteTodo(key) {
 
     // remove the todo item from array by filtering it.
     todoItems = todoItems.filter(item => item.id !== Number(key))
+    renderTodo(todo)
 }
 
 
