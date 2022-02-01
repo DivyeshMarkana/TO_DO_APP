@@ -12,4 +12,27 @@ function addTodo(text) {
 
     todoItems.push(todo)
     console.log(todoItems);
-}
+} 
+
+// form element
+const form = document.querySelector(".js-form")
+
+// Event of form element
+form.addEventListener("submit", event => {
+
+    // prevent page refresh on form submission
+    event.preventDefault()
+
+    // input element
+    const input = document.querySelector(".js-todo-input")
+
+    // get value from input element and remove the white spaces
+    const text = input.value.trim();
+
+    if (text !== "") {
+        addTodo(text);
+        input.value = "";
+        input.focus();
+    }
+
+})
