@@ -3,6 +3,7 @@ let todoItems = [];
 
 
 function renderTodo(todo) {
+    localStorage.setItem("todoListRef", JSON.stringify(todoItems))
 
     // List of todo items
     const list = document.querySelector(".js-todo-list")
@@ -124,5 +125,7 @@ form.addEventListener("submit", event => {
     }
 
 })
+
+
 
 
