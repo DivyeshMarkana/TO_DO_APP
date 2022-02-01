@@ -1,7 +1,6 @@
 //this array holds list of todo items
 let todoItems = [];
 
-
 function renderTodo(todo) {
     localStorage.setItem("todoListRef", JSON.stringify(todoItems))
 
@@ -13,7 +12,7 @@ function renderTodo(todo) {
         item.remove()
 
         // clear white space from the list container when "todoItem" is empty.
-        if (todoItems.length === 0 ) {
+        if (todoItems.length === 0) {
             list.innerHTML = ""
         }
         return
@@ -70,12 +69,10 @@ function toggleDone(key) {
     // locate the to do item in the todoItems array and set its property to the opposite.
     todoItems[index].checked = !todoItems[index].checked;
     renderTodo(todoItems[index]);
-
-
 }
 
 function deleteTodo(key) {
-    
+
     const index = todoItems.findIndex(item => item.id === Number(key))
 
     const todo = {
@@ -89,7 +86,8 @@ function deleteTodo(key) {
 }
 
 
-// function will creates object of TO DO items base on what entered in input text and push it to todoItems array with unique id name created with Date.now().
+// function will creates object of TO DO items base on what entered in input text 
+// and push it to todoItems array with unique id name created with Date.now().
 
 function addTodo(text) {
     const todo = {
@@ -102,6 +100,8 @@ function addTodo(text) {
     renderTodo(todo)
     console.log(todoItems);
 }
+
+
 
 // form element
 const form = document.querySelector(".js-form")
@@ -123,10 +123,10 @@ form.addEventListener("submit", event => {
         input.value = "";
         input.focus();
     }
-
 })
 
-document.addEventListener("DOMContentLoaded", () =>{
+
+document.addEventListener("DOMContentLoaded", () => {
     const ref = localStorage.getItem("todoListRef");
 
     if (ref) {
