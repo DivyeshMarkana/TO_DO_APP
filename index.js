@@ -63,6 +63,19 @@ function toggleDone(key) {
 
 }
 
+function deleteTodo(key) {
+    
+    const index = todoItems.findIndex(item => item.id === Number(key))
+
+    const todo = {
+        deleted: true,
+        ...todoItems[index]
+    }
+
+    // remove the todo item from array by filtering it.
+    todoItems = todoItems.filter(item => item.id !== Number(key))
+}
+
 
 // function will creates object of TO DO items base on what entered in input text and push it to todoItems array with unique id name created with Date.now().
 
