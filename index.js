@@ -31,6 +31,29 @@ function renderTodo(todo) {
     list.append(node);
 }
 
+const list = document.querySelector(".js-todo-list")
+
+// Add event for checked item
+list.addEventListener("click", event => {
+    if (event.target.classList.contains("js-tick")) {
+        const itemKey = event.target.parentElement.dataset.key;
+        toggleDone(itemKey)
+    }
+})
+
+function toggleDone(key) {
+    
+    // find the position of an element in the array
+    const index = todoItems.findIndex(item => item.id === Number(key));
+
+    // locate the to do item in the todoItems array and set its property to the opposite.
+    todoItems[index].checked = ! todoItems[index].checked;
+    renderTodo(todoItems[index]);
+
+
+}
+
+
 // function will creates object of TO DO items base on what entered in input text and push it to todoItems array with unique id name created with Date.now().
 
 function addTodo(text) {
