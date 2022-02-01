@@ -44,6 +44,11 @@ list.addEventListener("click", event => {
         const itemKey = event.target.parentElement.dataset.key;
         toggleDone(itemKey)
     }
+
+    if (event.target.classList.contains("js-delete-todo")) {
+        const itemKey = event.target.parentElement.dataset.key;
+        deleteTodo(itemKey)
+    }
 })
 
 function toggleDone(key) {
