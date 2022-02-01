@@ -10,6 +10,11 @@ function renderTodo(todo) {
 
     if (todo.deleted) {
         item.remove()
+
+        // clear white space from the list container when "todoItem" is empty.
+        if (todoItems.length === 0 ) {
+            list.innerHTML = ""
+        }
         return
     }
 
